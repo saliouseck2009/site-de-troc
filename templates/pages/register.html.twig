@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Register {% endblock %}
+
+{% block body %}
+
+    <!-- Login Start -->
+    <div class="login">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="register-form">
+
+                        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                        {{ form(form) }}
+{#                        <form class="row" method="POST" action="{{  path('create') }}">#}
+{#                            <div class="col-md-6">#}
+{#                                <label>Nom</label>#}
+{#                                <input class="form-control" type="text" name="name" placeholder="Renseigner votre nom">#}
+{#                            </div>#}
+{#                            <div class="col-md-6">#}
+{#                                <label>Pseudonyme</label>#}
+{#                                <input class="form-control" name="username" type="text" placeholder="Votre pseudonyme">#}
+{#                            </div>#}
+{#                            <div class="col-md-6">#}
+{#                                <label>E-mail</label>#}
+{#                                <input class="form-control" name="email" type="text" placeholder="Votre E-mail">#}
+{#                            </div>#}
+{#                            <div class="col-md-6">#}
+{#                                <label>Mot de Passe</label>#}
+{#                                <input class="form-control" name="password" type="password" placeholder="Votre mot de passe">#}
+{#                            </div>#}
+{#                            <div class="col-md-6">#}
+{#                                <label>Confirmation</label>#}
+{#                                <input class="form-control" name="confirm_pass" type="password" placeholder="Confirmer votre mot de passe">#}
+{#                            </div>#}
+{#                            <div class="col-md-12">#}
+{#                                <button class="btn">Submit</button>#}
+{#                            </div>#}
+{#                        </form>#}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Login End -->
+
+{% endblock %}
