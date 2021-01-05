@@ -11,16 +11,16 @@
                     <div class="col-lg-6">    
 
                     </div>
-                    <div class="col-lg-6">
+                    <form action="{{ path('security_login') }}" method="post" class="col-lg-6">
                         <div class="login-form">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>E-mail / Username</label>
-                                    <input class="form-control" type="text" placeholder="E-mail / Username">
+                                    <input class="form-control" type="text" name="_username" placeholder="Votre E-mail">
                                 </div>
                                 <div class="col-md-6">
-                                    <label>Password</label>
-                                    <input class="form-control" type="text" placeholder="Password">
+                                    <label>Mot de passe</label>
+                                    <input class="form-control" type="password" name="_password" placeholder="Mot de passe">
                                 </div>
                                 <div class="col-md-12">
                                     <div class="custom-control custom-checkbox">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

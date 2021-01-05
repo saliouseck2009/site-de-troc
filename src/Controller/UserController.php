@@ -15,45 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
-    /**
-     * @Route ("/user/create", methods={"POST","GET"}, name="create")
-     * @param Request $request
-     * @param EntityManagerInterface $em
-     * @return Response
-     */
-    public function create(Request $request, EntityManagerInterface $em)
-    {
-//        if ($request->isMethod('POST')){
-//            $data = $request->request->all();
-//            $user = new User();
-//            $user->setEmail($data['email']);
-//            $user->setName($data['name']);
-//            $user->setPassword($data["password"]);
-//
-//            $em->persist($user);
-//            $em->flush();
-//        }
-//        $form = $this->createForm(USER::class,$user , [
-//            'action' => $this->generateUrl('create'),
-//            'method' => 'POST',
-//            'class' =>'row',
-//        ]);
-        $form = $this->createFormBuilder()
-             ->add("name", TextType::class)
-             ->add('username', TextType::class)
-             ->add('email',TextType::class )
-             ->add('password',PasswordType::class)
-             ->add("confimer Mot de passe", PasswordType::class)
-             ->getForm()
-        ;
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid())
-        {
-
-        }
-
-        return $this->render('/',['form' =>$form->createView()]);
-    }
 
     /**
      * @Route ("/login", methods={"POST","GET"}, name="login")

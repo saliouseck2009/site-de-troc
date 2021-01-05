@@ -30,22 +30,13 @@
                             <a href="{{ path('books') }}" class="nav-item nav-link {# active #}">Livres</a>
                             <a href="{{ path('contact') }}" class="nav-item nav-link {# active #}">Contact</a>
                             <a href="{{ path('account') }}" class="nav-item nav-link {# active #}">Mon compte</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
-                                <div class="dropdown-menu">
-                                    <a href="login.html" class="dropdown-item">Login & Register</a>
-                                    <a href="contact.html" class="dropdown-item">Contact Us</a>
-                                </div>
-                            </div>
                         </div>
                         <div class="navbar-nav ml-auto">
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                                <div class="dropdown-menu">
-                                    <a href="login.html" class="dropdown-item">Login & Register</a>
-                                    <a href="contact.html" class="dropdown-item">Contact Us</a>
-                                </div>
-                            </div>
+                            {% if not app.user %}
+                            <a href="{{ path('security_login') }}" class="nav-item nav-link {# active #}">Se connecter</a>
+                            {% else %}
+                            <a href="{{ path('security_logout') }}" class="nav-item nav-link {# active #}">Se deconnecter</a>
+                            {% endif %}
                         </div>
                     </div>
                 </nav>
