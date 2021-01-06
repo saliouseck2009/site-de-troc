@@ -32,6 +32,19 @@ class BookRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * @return Book[] Returns an array of Book objects
+     */
+    public function findTenMostRecentBook()
+    {
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.year', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
 
     // /**
