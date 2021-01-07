@@ -150,7 +150,7 @@
                                 </div>
                             </div>
                             <div class="product-image">
-                                <a href="product-detail.html">
+                                <a href="{{ path('addbook', {'id': book.id}) }}">
 {#                                    <img src="img/product-5.jpg" alt="Product Image">#}
                                     <img src="http://covers.openlibrary.org/b/isbn/{{book.isbn}}-L.jpg" alt="{{ book.title }}" width="250" height="400">
 
@@ -163,123 +163,12 @@
                             </div>
                             <div class="product-price row justify-content-between">
                                 <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
-                                <a class="btn col-4" href="" title="Je le possède">Posséder</a>
+                                <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
-                    <div class="col-lg-3">
-                        <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Product Name</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/product-1.jpg" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Product Name</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/product-2.jpg" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <h3><span>$</span>99</h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Product Name</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/product-5.jpg" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price row justify-content-between">
-                                <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
-                                <a class="btn col-4" href="" title="Je le possède">Posséder</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="product-item">
-                            <div class="product-title">
-                                <a href="#">Product Name</a>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <a href="product-detail.html">
-                                    <img src="img/product-5.jpg" alt="Product Image">
-                                </a>
-                                <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="product-price row justify-content-between">
-                                <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
-                                <a class="btn col-4" href="" title="Je le possède">Posséder</a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -325,20 +214,14 @@
                                     </div>
                                 </div>
                                 <div class="product-image">
-                                    <a href="product-detail.html">
-                                        {#                                    <img src="img/product-5.jpg" alt="Product Image">#}
+                                    <a href="{{ path('addbook', {'id': book.id}) }}">
                                         <img src="http://covers.openlibrary.org/b/isbn/{{book.isbn}}-L.jpg" alt="{{ book.title }}" width="250" height="400">
 
                                     </a>
-                                    {#                                <div class="product-action">#}
-                                    {#                                    <a href="#"><i class="fa fa-cart-plus"></i></a>#}
-                                    {#                                    <a href="#"><i class="fa fa-heart"></i></a>#}
-                                    {#                                    <a href="#"><i class="fa fa-search"></i></a>#}
-                                    {#                                </div>#}
                                 </div>
                                 <div class="product-price row justify-content-between">
                                     <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
-                                    <a class="btn col-4" href="" title="Je le possède">Posséder</a>
+                                    <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
                                 </div>
                             </div>
                         </div>
@@ -420,4 +303,8 @@
             </div>
         </div>
         <!-- Review End -->
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 {% endblock %}

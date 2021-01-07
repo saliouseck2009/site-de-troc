@@ -18,7 +18,7 @@ class Message
     private $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text",nullable=true)
      */
     private $message_text;
 
@@ -32,6 +32,21 @@ class Message
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $recipient;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $validate;
 
     public function getId(): ?int
     {
@@ -70,6 +85,42 @@ class Message
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getRecipient(): ?string
+    {
+        return $this->recipient;
+    }
+
+    public function setRecipient(string $recipient): self
+    {
+        $this->recipient = $recipient;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getValidate(): ?string
+    {
+        return $this->validate;
+    }
+
+    public function setValidate(string $validate): self
+    {
+        $this->validate = $validate;
 
         return $this;
     }

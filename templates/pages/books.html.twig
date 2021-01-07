@@ -15,10 +15,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
-                        </div>
+
                     </div>
                     <div class="col-md-3">
                         <div class="user">
@@ -61,12 +58,12 @@
                                         <div class="col-md-4">
 
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="product-search">
-                                                <input type="email" value="Search">
-                                                <button><i class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
+{#                                        <div class="col-md-4">#}
+{#                                            <form action="{{ path('books') }}" method="post" class="product-search">#}
+{#                                                <input type="text" name="title" placeholder="entrez un mot clé">#}
+{#                                                <button type="submit"><i class="fa fa-search"></i></button>#}
+{#                                            </form>#}
+{#                                        </div>#}
                                         <div class="col-md-4">
 
                                         </div>
@@ -88,19 +85,15 @@
                                         </div>
                                     </div>
                                     <div class="product-image">
-                                        <a href="product-detail.html">
+                                        <a href="{{ path('addbook', {'id': book.id}) }}">
 {#                                            <img src="img/product-1.jpg" alt="Product Image">#}
                                             <img src="http://covers.openlibrary.org/b/isbn/{{book.isbn}}-L.jpg" alt="{{ book.title }}" width="300" height="300">
                                         </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
+
                                     </div>
                                     <div class="product-price row justify-content-between ">
                                         <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
-                                        <a class="btn col-4" href="" title="Je le possède">Posséder</a>
+                                        <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
                                     </div>
                                 </div>
                             </div>
@@ -129,23 +122,18 @@
                     <!-- Side Bar Start -->
                     <div class="col-lg-4 sidebar">
                         <div class="sidebar-widget category">
-                            <h2 class="title">Category</h2>
+                            <h2 class="title">Rechercher un livre</h2>
                             <nav class="navbar bg-light">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-female"></i>Fashion & Beauty</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-child"></i>Kids & Babies Clothes</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Men & Women Clothes</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-mobile-alt"></i>Gadgets & Accessories</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-microchip"></i>Electronics & Accessories</a>
+
+                                        <form method="post" action="{{ path('books') }}" class="form-group">
+                                            {% form_theme searchForm 'bootstrap_4_layout.html.twig' %}
+                                            {{ form_start(searchForm) }}
+                                            {{ form_row(searchForm.title, {'label': "Par titre ", 'attr': {'placeholder': 'titre du livre...'}}) }}
+                                            <button type="submit" class="btn btn-primary">rechercher</button>
+                                            {{ form_end(searchForm) }}
+                                        </form>
                                     </li>
                                 </ul>
                             </nav>
@@ -153,84 +141,39 @@
                         
                         <div class="sidebar-widget widget-slider">
                             <div class="sidebar-slider normal-slider">
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
+                                {% for book in books %}
+                                    <div class="col-md-4 ">
+                                        <div class="product-item">
+                                            <div class="product-title">
+                                                <a href="#">{{ book.title }}</a>
+                                                <div>{{ book.author }}</div>
+                                                <div class="ratting">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <div class="product-image">
+                                                <a href="{{ path('addbook', {'id': book.id}) }}">
+                                                    {#                                            <img src="img/product-1.jpg" alt="Product Image">#}
+                                                    <img src="http://covers.openlibrary.org/b/isbn/{{book.isbn}}-L.jpg" alt="{{ book.title }}" width="100" height="500" class="pl-3">
+                                                </a>
+{#                                                <div class="product-action">#}
+{#                                                    <a href="#"><i class="fa fa-cart-plus"></i></a>#}
+{#                                                    <a href="#"><i class="fa fa-heart"></i></a>#}
+{#                                                    <a href="#"><i class="fa fa-search"></i></a>#}
+{#                                                </div>#}
+                                            </div>
+                                            <div class="product-price row justify-content-between ">
+                                                <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
+                                                <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="img/product-10.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="img/product-9.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
-                                <div class="product-item">
-                                    <div class="product-title">
-                                        <a href="#">Product Name</a>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-image">
-                                        <a href="product-detail.html">
-                                            <img src="img/product-8.jpg" alt="Product Image">
-                                        </a>
-                                        <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-price">
-                                        <h3><span>$</span>99</h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
-                                    </div>
-                                </div>
+                                {% endfor %}
+
                             </div>
                         </div>
                         

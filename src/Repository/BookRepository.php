@@ -47,6 +47,72 @@ class BookRepository extends ServiceEntityRepository
 
 
 
+     /**
+      * @return Book[] Returns an array of Book objects
+      */
+    public function searchBytitle($isbn)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.isbn LIKE :isbn')
+            ->setParameter('title', '%'.$isbn.'%')
+            ->getQuery()
+            ->execute()
+        ;
+    }
+
+    /**
+     * @return Book[] Returns an array of Book objects
+     */
+    public function searchTitle($title)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.title LIKE :title')
+            ->setParameter('title', '%'.$title.'%')
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
+    /**
+     * @return Book[] Returns an array of Book objects
+     */
+    public function searchByAuthor($author)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.author LIKE :author')
+            ->setParameter('author', '%'.$author.'%')
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
+    /**
+     * @return Book[] Returns an array of Book objects
+     */
+    public function searchByYear($year)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.year LIKE :year')
+            ->setParameter('year', '%'.$year.'%')
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
+    /**
+     * @return Book[] Returns an array of Book objects
+     */
+    public function searchByPointValue($point)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.point_value LIKE :point_value')
+            ->setParameter('year', '%'.$point.'%')
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
+
     // /**
     //  * @return Book[] Returns an array of Book objects
     //  */

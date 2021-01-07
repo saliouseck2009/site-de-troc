@@ -67,9 +67,15 @@ class User implements UserInterface
      */
     public $confirm_password;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Book::class, mappedBy="users")
+     */
+    private $books;
+
     public function __construct()
     {
         $this->messages = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,5 +198,32 @@ class User implements UserInterface
     public function getSalt()
     {
         // TODO: Implement getSalt() method.
+    }
+
+    /**
+     * @return Collection|Book[]
+     */
+    public function getBooks(): Collection
+    {
+        return $this->books;
+    }
+
+    public function addBook(Book $book): self
+    {
+        if (!$this->books->contains($book)) {
+            $this->books[] = $book;
+            $book->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBook(Book $book): self
+    {
+        if ($this->books->removeElement($book)) {
+            $book->removeUser($this);
+        }
+
+        return $this;
     }
 }

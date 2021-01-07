@@ -12,13 +12,12 @@ class BookSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('isbn')
+//            ->add('isbn')
             ->add('title')
-            ->add('author')
-            ->add('year')
-            ->add('point_value')
-            ->add('category')
-            ->add('list_book')
+//            ->add('author')
+//            ->add('year')
+//            ->add('point_value')
+//            ->add('category')
         ;
     }
 
