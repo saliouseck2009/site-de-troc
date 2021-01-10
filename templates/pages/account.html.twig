@@ -55,7 +55,7 @@
                         <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                             <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-tachometer-alt"></i>Dashboard</a>
                             <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Mes Commandes</a>
-                            <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab1" role="tab"><i class="fa fa-shopping-bag"></i>Mes envois</a>
+                            <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab1" role="tab"><i class="fa fa-shopping-bag"></i>Demande reçu</a>
                             <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab2" role="tab"><i class="fa fa-shopping-bag"></i>Mes livres</a>
                             <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>address</a>
                             <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
@@ -76,38 +76,33 @@
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>No</th>
-                                                <th>Produits</th>
-                                                <th>Date</th>
-                                                <th>Points</th>
-                                                <th>Expéditeur</th>
-                                                <th>Action</th>
+                                                <th>Titre du livre</th>
+                                                <th>Date de publication</th>
+                                                <th>valeur en point</th>
+                                                <th>En cour</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+{#                                        {% for message in app.user.messages %}#}
+{#                                            <tr>#}
+{#                                                <td>{{ message.recipient }}</td>#}
+{#                                                <td>Product Name</td>#}
+{#                                                <td>01 Jan 2020</td>#}
+{#                                                <td>$99</td>#}
+{#                                                <td>Approved</td>#}
+{#                                                <td><a href="#"> <button class="btn mr-2">accepter</button></a><a href="#"><button class="btn">Refuser</button></a></td>#}
+{#                                            </tr>#}
+{#                                            {% endfor %}#}
+
+                                        {% for book in commandBooks %}
                                             <tr>
-                                                <td>1</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$99</td>
-                                                <td>Approved</td>
-                                                <td><a href="#"> <button class="btn mr-2">accepter</button></a><a href="#"><button class="btn">Refuser</button></a></td>
+                                                <td>{{ loop.index }}</td>
+                                                <td>{{ book.title }}</td>
+                                                <td>{{ book.year }}</td>
+                                                <td>{{ book.pointValue }}</td>
+                                                <td><button class="btn">Annuler</button></td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$99</td>
-                                                <td>Approved</td>
-                                                <td><button class="btn">View</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Product Name</td>
-                                                <td>01 Jan 2020</td>
-                                                <td>$99</td>
-                                                <td>Approved</td>
-                                                <td><button class="btn">View</button></td>
-                                            </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -121,35 +116,19 @@
                                             <th>Produits</th>
                                             <th>Date</th>
                                             <th>Points</th>
-                                            <th>Expéditeur</th>
-                                            <th>Action</th>
+                                            <th>Demande d'échange</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Product Name</td>
-                                            <td>01 Jan 2020</td>
-                                            <td>$99</td>
-                                            <td>Approved</td>
-                                            <td><a href="#"> <button class="btn mr-2">accepter</button></a><a href="#"><button class="btn">Refuser</button></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Product Name</td>
-                                            <td>01 Jan 2020</td>
-                                            <td>$99</td>
-                                            <td>Approved</td>
-                                            <td><button class="btn">View</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Product Name</td>
-                                            <td>01 Jan 2020</td>
-                                            <td>$99</td>
-                                            <td>Approved</td>
-                                            <td><button class="btn">View</button></td>
-                                        </tr>
+                                        {% for book in demandBooks %}
+                                            <tr>
+                                                <td>{{ loop.index }}</td>
+                                                <td>{{ book.title }}</td>
+                                                <td>{{ book.year }}</td>
+                                                <td>{{ book.pointValue }}</td>
+                                                <td><a href="#"> <button class="btn mr-2">accepter</button></a><a href="#"><button class="btn">Refuser</button></a></td>
+                                            </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -168,30 +147,16 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        {% for book in user.books %}
                                         <tr>
-                                            <td>1</td>
-                                            <td>Product Name</td>
-                                            <td>01 Jan 2020</td>
-                                            <td>$99</td>
-                                            <td>Approved</td>
-                                            <td><a href="#"> <button class="btn mr-2">accepter</button></a><a href="#"><button class="btn">Refuser</button></a></td>
+                                            <td>{{ loop.index }}</td>
+                                            <td>{{ book.title }}</td>
+                                            <td>{{ book.year }}</td>
+                                            <td>{{ book.pointValue }}</td>
+                                            <td>{{ book.author }}</td>
+                                            <td><a href="#"> <button class="btn mr-2">supprimer de mes livres</button></a></td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Product Name</td>
-                                            <td>01 Jan 2020</td>
-                                            <td>$99</td>
-                                            <td>Approved</td>
-                                            <td><button class="btn">View</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Product Name</td>
-                                            <td>01 Jan 2020</td>
-                                            <td>$99</td>
-                                            <td>Approved</td>
-                                            <td><button class="btn">View</button></td>
-                                        </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MessageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
@@ -18,7 +19,7 @@ class Message
     private $id;
 
     /**
-     * @ORM\Column(type="text",nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $message_text;
 
@@ -44,7 +45,7 @@ class Message
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean")
      */
     private $validate;
 
@@ -53,12 +54,12 @@ class Message
         return $this->id;
     }
 
-    public function getMessageText(): ?string
+    public function getMessageText(): ?int
     {
         return $this->message_text;
     }
 
-    public function setMessageText(string $message_text): self
+    public function setMessageText(int $message_text): self
     {
         $this->message_text = $message_text;
 
@@ -113,12 +114,12 @@ class Message
         return $this;
     }
 
-    public function getValidate(): ?string
+    public function getValidate(): ?bool
     {
         return $this->validate;
     }
 
-    public function setValidate(string $validate): self
+    public function setValidate(bool $validate): self
     {
         $this->validate = $validate;
 

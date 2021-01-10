@@ -112,6 +112,26 @@ class BookRepository extends ServiceEntityRepository
             ;
     }
 
+     /**
+      * @return Book[] Returns an array of Book objects
+      */
+
+    public function findOrderdBook($value)
+    {
+        return $this->createQueryBuilder('b')
+            ->join()
+            ->andWhere('b.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('b.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
+
 
     // /**
     //  * @return Book[] Returns an array of Book objects

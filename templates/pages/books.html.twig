@@ -10,7 +10,7 @@
                     <div class="col-md-3">
                         <div class="logo">
                             <a href="index.html">
-                                <img src="img/logo.png" alt="Logo">
+                                <img src="{{ asset("assets/img/logo.png") }}" alt="Logo">
                             </a>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
 
                                     </div>
                                     <div class="product-price row justify-content-between ">
-                                        <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
+                                        <a class="btn col-4" href="{{ path('askbook', {'id': book.id}) }}" title="Je le veux">Vouloir</a>
                                         <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
 {#                                                </div>#}
                                             </div>
                                             <div class="product-price row justify-content-between ">
-                                                <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
+                                                <a class="btn col-4" href="{{ path('askbook', {'id': book.id}) }}" title="Je le veux">Vouloir</a>
                                                 <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
                                             </div>
                                         </div>
