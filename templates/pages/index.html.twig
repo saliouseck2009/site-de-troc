@@ -69,7 +69,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-6 feature-col">
                         <div class="feature-content">
-                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fas fa-book"></i>
                             <h2>Ajouter un livre</h2>
                             <p>
                                 Si vous voyer un livre que vous posseder ajouter le a votre liste de livre avec le bouton posseder.
@@ -87,19 +87,20 @@
                     </div>
                     <div class="col-lg-3 col-md-6 feature-col">
                         <div class="feature-content">
-                            <i class="fa fa-sync-alt"></i>
-                            <h2>90 Days Return</h2>
+                            <i class="fas fa-users"></i>
+{#                            <i class="fa fa-sync-alt"></i>#}
+                            <h2>Notification</h2>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur elit
+                                Une notification est envoyer à tous les utilisateurs ayant le livre demander
                             </p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 feature-col">
                         <div class="feature-content">
                             <i class="fa fa-comments"></i>
-                            <h2>24/7 Support</h2>
+                            <h2>Réponse</h2>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur elit
+                                Attendez la réponse de l'un des utilisateurs
                             </p>
                         </div>
                     </div>
@@ -162,8 +163,8 @@
 {#                                </div>#}
                             </div>
                             <div class="product-price row justify-content-between">
-                                <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
-                                <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
+                                <a class="js-need btn col-4" href="{{ path('askbook', {'id': book.id}) }}" title="Je le veux">Vouloir</a>
+                                <a class="js-have btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
                             </div>
                         </div>
                     </div>
@@ -220,8 +221,8 @@
                                     </a>
                                 </div>
                                 <div class="product-price row justify-content-between">
-                                    <a class="btn col-4" href="" title="Je le veux">Vouloir</a>
-                                    <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
+                                    <a class="js-need btn col-4" href="{{ path('askbook', {'id': book.id}) }}" title="Je le veux">Vouloir</a>
+                                    <a class="js-have btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
                                 </div>
                             </div>
                         </div>
@@ -307,4 +308,34 @@
 
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded',function (){
+            document.querySelectorAll('.js-need').forEach(function(link){
+                link.addEventListener('click', onClickBtnNeed)
+            })
+            document.querySelectorAll('.js-have').forEach(function(link){
+                link.addEventListener('click', onClickBtnHave)
+            })
+        });
+        function onClickBtnNeed(event){
+            event.preventDefault();
+
+            const url = this.href;
+
+            axios.get(url).then(function (response){
+
+            })
+        }
+
+        function onClickBtnHave(event){
+            event.preventDefault();
+
+            const url = this.href;
+            axios.get(url).then(function (response){
+                console.log(response)
+            })
+        }
+
+
+    </script>
 {% endblock %}

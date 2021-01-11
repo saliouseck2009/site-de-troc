@@ -59,7 +59,7 @@
                             <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab2" role="tab"><i class="fa fa-shopping-bag"></i>Mes livres</a>
                             <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>address</a>
                             <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
-                            <a class="nav-link" href="index.html"><i class="fa fa-sign-out-alt"></i>Se deconnecté</a>
+                            <a class="nav-link" href={{ path('security_logout') }}><i class="fa fa-sign-out-alt"></i>Se deconnecté</a>
                         </div>
                     </div>
                     <div class="col-md-9">
@@ -99,8 +99,8 @@
                                                 <td>{{ loop.index }}</td>
                                                 <td>{{ book.title }}</td>
                                                 <td>{{ book.year }}</td>
-                                                <td>{{ book.pointValue }}</td>
-                                                <td><button class="btn">Annuler</button></td>
+                                                <td>{{ book.pointValue }} </td>
+                                                <td><a href="{{ path('deleteMessage', {'idMessage': commandBookMessage[loop.index - 1].id}) }}"><button class="btn">Annuler</button></a></td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>
@@ -126,7 +126,7 @@
                                                 <td>{{ book.title }}</td>
                                                 <td>{{ book.year }}</td>
                                                 <td>{{ book.pointValue }}</td>
-                                                <td><a href="#"> <button class="btn mr-2">accepter</button></a><a href="#"><button class="btn">Refuser</button></a></td>
+                                                <td><a href="{{ path('validateCommande', {'idbook': book.id, 'idmessage': demandBookMessages[loop.index - 1].id, 'iduser': demandBookMessages[loop.index - 1].user.id}) }}"> <button class="btn mr-2">accepter</button></a><a href="{{ path('refuseCommande', {'idmessage': demandBookMessages[loop.index - 1].id }) }}"><button class="btn">Refuser</button></a></td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>
@@ -154,7 +154,7 @@
                                             <td>{{ book.year }}</td>
                                             <td>{{ book.pointValue }}</td>
                                             <td>{{ book.author }}</td>
-                                            <td><a href="#"> <button class="btn mr-2">supprimer de mes livres</button></a></td>
+                                            <td><a href="{{  path('deleteUserBook',{'id': book.id}) }}"> <button class="btn mr-2">supprimer de mes livres</button></a></td>
                                         </tr>
                                         {% endfor %}
                                         </tbody>

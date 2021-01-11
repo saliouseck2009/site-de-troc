@@ -70,7 +70,7 @@ class BookDetailController extends AbstractController
     }
 
     /**
-     * @Route("askbook/{id}", name="askbook")
+     * @Route("/askbook/{id}", name="askbook")
      * @param BookRepository $bookRepository
      * @param UserRepository $userRepository
      */
@@ -98,6 +98,7 @@ class BookDetailController extends AbstractController
 
                     }
                 }
+
                 return $this->render('pages/book-detail.html.twig',[
                     'recentbook'=>$recentbook,
                     'book'=>$book,
