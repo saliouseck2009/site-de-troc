@@ -1,0 +1,33 @@
+<script>
+    document.addEventListener('DOMContentLoaded',function (){
+    document.querySelectorAll('.js-need').forEach(function(link){
+        link.addEventListener('click', onClickBtnNeed)
+    });
+    document.querySelectorAll('.js-have').forEach(function(link){
+    link.addEventListener('click', onClickBtnHave)
+})
+});
+    function onClickBtnNeed(event){
+    event.preventDefault();
+    console.log("You want to have this book")
+
+    const url = this.href;
+
+    axios.get(url).then(function (response){
+    console.log(response)
+    $.notify(response.data.message, response.data.type);
+})
+}
+
+    function onClickBtnHave(event){
+    event.preventDefault();
+    console.log("You have this book")
+    const url = this.href;
+    axios.get(url).then(function (response){
+    console.log(response)
+    $.notify(response.data.message, response.data.type);
+})
+}
+
+
+</script>

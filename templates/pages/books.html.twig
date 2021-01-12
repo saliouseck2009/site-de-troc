@@ -85,15 +85,15 @@
                                         </div>
                                     </div>
                                     <div class="product-image">
-                                        <a href="{{ path('addbook', {'id': book.id}) }}">
+                                        <a href="{{ path('book', {'id': book.id}) }}">
 {#                                            <img src="img/product-1.jpg" alt="Product Image">#}
                                             <img src="http://covers.openlibrary.org/b/isbn/{{book.isbn}}-L.jpg" alt="{{ book.title }}" width="300" height="300">
                                         </a>
 
                                     </div>
                                     <div class="product-price row justify-content-between ">
-                                        <a class="btn col-4" href="{{ path('askbook', {'id': book.id}) }}" title="Je le veux">Vouloir</a>
-                                        <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
+                                        <a class="js-need btn col-4" href="{{ path('askbook', {'id': book.id}) }}" title="Je le veux">Vouloir</a>
+                                        <a class="js-have btn col-4" href="{{ path('addbook', {'id': book.id}) }}" title="Je le possède">Posséder</a>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +156,7 @@
                                                 </div>
                                             </div>
                                             <div class="product-image">
-                                                <a href="{{ path('addbook', {'id': book.id}) }}">
+                                                <a href="{{ path('book', {'id': book.id}) }}">
                                                     {#                                            <img src="img/product-1.jpg" alt="Product Image">#}
                                                     <img src="http://covers.openlibrary.org/b/isbn/{{book.isbn}}-L.jpg" alt="{{ book.title }}" width="100" height="500" class="pl-3">
                                                 </a>
@@ -167,8 +167,8 @@
 {#                                                </div>#}
                                             </div>
                                             <div class="product-price row justify-content-between ">
-                                                <a class="btn col-4" href="{{ path('askbook', {'id': book.id}) }}" title="Je le veux">Vouloir</a>
-                                                <a class="btn col-4" href="{{ path('book', {'id': book.id}) }}" title="Je le possède">Posséder</a>
+                                                <a class="js-need btn col-4" href="{{ path('askbook', {'id': book.id}) }}" title="Je le veux">Vouloir</a>
+                                                <a class="js-have btn col-4" href="{{ path('addbook', {'id': book.id}) }}" title="Je le possède">Posséder</a>
                                             </div>
                                         </div>
                                     </div>
@@ -210,4 +210,8 @@
             </div>
         </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    {% include 'js/javascript.html' %}
 {% endblock %}
